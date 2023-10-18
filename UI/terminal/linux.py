@@ -8,19 +8,21 @@ class LinuxTerminalUI:
         self.output_window = None
 
     def setup_window(self):
-        curses.curs_set(1)  # on input cursor
+        curses.curs_set(1)  # On input cursor
         self.stdscr.clear()
 
-        height, width = self.stdscr.getmaxyx()  # get window size
+        max_height, max_width = self.stdscr.getmaxyx()  # get window size
 
-        middle = width // 2
+        middle = max_width // 2
 
-        # create a window to input text
-        self.input_window = curses.newwin(height, middle, 0, 0)
+        # create window to input text
+        self.input_window = curses.newwin(max_height - 2, middle, 1, 1)
         self.input_window.border(0)
 
-        # create a window to output text
-        self.output_window = curses.newwin(height, middle, 0, middle)
+        # create window to output text
+        self.output_window = curses.newwin(
+            max_height - 2, max_width - middle - 2, 1, middle + 1
+        )
         self.output_window.border(0)
 
         self.input_window.refresh()
@@ -33,15 +35,15 @@ class LinuxTerminalUI:
         while True:
             key = self.input_window.getch()
 
-            if key == curses.KEY_ENTER:
+            if key == 10:  # Enter key
                 self.output_window.clear()
+                self.output_window.refresh()  # Обновить окно вывода
                 self.output_window.addstr(1, 1, input_text)
-                self.output_window.refresh()
-                # input_text = ""
+                input_text = ""
             elif key == curses.KEY_BACKSPACE:
                 input_text = input_text[:-1]
             else:
-                input_text = chr(key)
+                input_text += chr(key)
 
             self.input_window.clear()
             self.input_window.addstr(1, 1, input_text)
@@ -50,3 +52,7 @@ class LinuxTerminalUI:
     def run(self):
         self.setup_window()
         self.edit_text()
+
+
+if __name__ == "__main__":
+    curses.wrapper(LinuxTerminalUI)
