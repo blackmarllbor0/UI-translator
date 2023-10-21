@@ -1,0 +1,15 @@
+altgraph==0.17.4
+black==23.9.1
+certifi==2023.7.22
+click==8.1.7
+distlib==0.3.7
+filelock==3.12.4
+mypy-extensions==1.0.0
+npyscreen @ git+https://github.com/jwoglom/npyscreen.git@d01ce55df23ff1596ff874f20b85a1270f42b015
+packaging==23.2
+pathspec==0.11.2
+pipenv==2023.10.20
+platformdirs==3.11.0
+pyinstaller==6.1.0
+pyinstaller-hooks-contrib==2023.10
+virtualenv==20.24.5
