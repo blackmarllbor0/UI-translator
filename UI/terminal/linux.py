@@ -1,58 +1,28 @@
-import curses
+import npyscreen, UI.terminal.components.input as Input, UI.terminal.components.output as Output
 
 
-class LinuxTerminalUI:
-    def __init__(self, stdscr) -> None:
-        self.stdscr = stdscr
-        self.input_window = None
-        self.output_window = None
+class MainForm(npyscreen.FormBaseNew):
+    def create(self):
+        self.add_event_hander("event_value_edited", self.event_value_edited)
 
-    def setup_window(self):
-        curses.curs_set(1)  # On input cursor
-        self.stdscr.clear()
+        handlers = {
+            "^Q": self.exit_func,
+        }
 
-        max_height, max_width = self.stdscr.getmaxyx()  # get window size
+        self.add_handlers(handlers)
 
-        middle = max_width // 2
+        height, width = self.useable_space()
+        self.input = self.add(Input.Input, name="Enter text:", max_height=height // 2)
+        self.output = self.add(Output.Output, footer="Result", editable=False)
 
-        # create window to input text
-        self.input_window = curses.newwin(max_height - 2, middle, 1, 1)
-        self.input_window.border(0)
+    def event_value_edited(self, event):
+        self.output.value = self.input.value
+        self.output.display()
 
-        # create window to output text
-        self.output_window = curses.newwin(
-            max_height - 2, max_width - middle - 2, 1, middle + 1
-        )
-        self.output_window.border(0)
+    def inputbox_clear(self, _input):
+        self.input.value = self.InputBox2.value = ""
+        self.input.display()
+        self.output.display()
 
-        self.input_window.refresh()
-        self.output_window.refresh()
-
-    def edit_text(self):
-        curses.curs_set(1)
-        input_text = ""
-
-        while True:
-            key = self.input_window.getch()
-
-            if key == 10:  # Enter key
-                self.output_window.clear()
-                self.output_window.refresh()  # Обновить окно вывода
-                self.output_window.addstr(1, 1, input_text)
-                input_text = ""
-            elif key == curses.KEY_BACKSPACE:
-                input_text = input_text[:-1]
-            else:
-                input_text += chr(key)
-
-            self.input_window.clear()
-            self.input_window.addstr(1, 1, input_text)
-            self.input_window.refresh()
-
-    def run(self):
-        self.setup_window()
-        self.edit_text()
-
-
-if __name__ == "__main__":
-    curses.wrapper(LinuxTerminalUI)
+    def exit_func(self, _input):
+        exit(0)

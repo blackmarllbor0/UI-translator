@@ -1,12 +1,13 @@
-from curses import wrapper
-from UI.terminal.linux import LinuxTerminalUI
-from UI.terminal.get_ui_by_oc import get_UI_by_user_OC
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from UI.terminal.terminal import TerminalUI
 
 
-def main(stdscr):
-    editor = get_UI_by_user_OC(stdscr)
-    editor.run()
+def main():
+    app = TerminalUI()
+    app.run()
 
 
 if __name__ == "__main__":
-    wrapper(main)
+    main()

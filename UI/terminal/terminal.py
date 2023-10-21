@@ -1,20 +1,11 @@
-from abc import ABC, abstractmethod
+import npyscreen
+from UI.terminal.get_ui_by_oc import get_UI_by_user_OC
 
 
-class TerminalUI(ABC):
-    def __init__(self, stdscr) -> None:
-        self.stdscr = stdscr
-        self.input_window = None
-        self.outut_window = None
+class TerminalUI(npyscreen.StandardApp):
+    def __init__(self):
+        super().__init__()
+        self._form = get_UI_by_user_OC()
 
-    @abstractmethod
-    def setup_window(self):
-        pass
-
-    @abstractmethod
-    def edit_text(self):
-        pass
-
-    def run(self):
-        self.setup_window()
-        self.edit_text()
+    def onStart(self):
+        self.addForm("MAIN", self._form, name="Translator")
