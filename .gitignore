@@ -1,4 +1,11 @@
+# ide
 .vscode
+
+# local
 venv
+
+# build
 dist
 build
+UI/terminal/__pycache__
+UI/terminal/components/__pycache__

@@ -1,4 +1,5 @@
-import npyscreen, UI.terminal.components.input as Input, UI.terminal.components.output as Output
+import npyscreen, curses
+import UI.terminal.components.input as Input, UI.terminal.components.output as Output
 
 
 class MainForm(npyscreen.FormBaseNew):
@@ -7,6 +8,7 @@ class MainForm(npyscreen.FormBaseNew):
 
         handlers = {
             "^Q": self.exit_func,
+            curses.ascii.alt(curses.ascii.NL): self.inputbox_clear,
         }
 
         self.add_handlers(handlers)
@@ -20,7 +22,7 @@ class MainForm(npyscreen.FormBaseNew):
         self.output.display()
 
     def inputbox_clear(self, _input):
-        self.input.value = self.InputBox2.value = ""
+        self.input.value = self.output.value = ""
         self.input.display()
         self.output.display()
 
