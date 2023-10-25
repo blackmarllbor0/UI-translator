@@ -1,0 +1,6 @@
+storage:
+  lang:
+    src: "ru"
+    dest: "en"
+  translate_api:
+    "google"
