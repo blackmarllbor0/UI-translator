@@ -12,13 +12,21 @@ class Lang(TypedDict):
     dest: str
 
 
+class Buffer(TypedDict):
+    paste: bool
+    copy: bool
+
+
 class Storage(TypedDict):
     lang: Lang
     translate_api: str
+    buffer: Buffer
+    print: bool
+    open_in: str
 
 
 class StorageService:
-    storage: Storage
+    storage: Storage = None
 
     def __init__(self):
         self._path = Path.home() / "translator_storage.yaml"

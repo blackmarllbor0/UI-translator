@@ -4,3 +4,9 @@ storage:
     dest: "en"
   translate_api:
     "google"
+  open_in:
+    "terminal"
+  buffer:
+    paste: true
+    copy: true
+  print: true

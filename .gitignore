@@ -1,5 +1,6 @@
 # ide
 .vscode
+.idea
 
 # local
 venv
@@ -7,5 +8,7 @@ venv
 # build
 dist
 build
+__pycache__
 UI/terminal/__pycache__
 UI/terminal/components/__pycache__
+API/__pycache__
