@@ -45,7 +45,7 @@ class App(npyscreen.FormBaseNew):
 
         self.add_handlers(
             {
-                "^Q": Exit.good,  # ctrl+Q
+                "^Q": self.exit,  # ctrl+Q
                 "^U": self.input_box_clear,  # alt+enter
             }
         )
@@ -53,11 +53,17 @@ class App(npyscreen.FormBaseNew):
         height, width = self.useable_space()
 
         self.input: Input.Input = self.add(
-            Input.Input, name="Enter text:", max_height=height // 2
+            Input.Input,
+            name="Enter text:",
+            # footer=self.translator.src_lang,
+            max_height=height // 2,
         )
 
         self.output: Output.Output = self.add(
-            Output.Output, footer="Result", editable=False
+            Output.Output,
+            # name=self.translator.dest_lang,
+            footer="Result",
+            editable=False,
         )
 
     def event_value_edited(self, _event):
@@ -75,3 +81,6 @@ class App(npyscreen.FormBaseNew):
 
         self.input.display()
         self.output.display()
+
+    def exit(self, _input):
+        Exit.good()
