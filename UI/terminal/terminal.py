@@ -41,7 +41,7 @@ class App(npyscreen.FormBaseNew):
         self.translator = get_translator_by_api()
 
         self.add_event_hander("event_value_edited", self.event_value_edited)
-        self.keypress_timeout = 8
+        self.keypress_timeout = 6
 
         self.add_handlers(
             {
@@ -77,7 +77,8 @@ class App(npyscreen.FormBaseNew):
 
     def while_waiting(self):
         if self.input.value is not None and len(self.input.value) > 1:
-            self.output.value = self.translator.translate(self.input.value)
+            translated_text = self.translator.translate(self.input.value)
+            self.output.value = translated_text
 
         self.input.display()
         self.output.display()
