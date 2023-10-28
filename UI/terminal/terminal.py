@@ -37,9 +37,9 @@ class App(npyscreen.FormBaseNew):
             **keywords
         )
 
+    def create(self):
         self.translator = get_translator_by_api()
 
-    def create(self):
         self.add_event_hander("event_value_edited", self.event_value_edited)
         self.keypress_timeout = 8
 
@@ -55,14 +55,14 @@ class App(npyscreen.FormBaseNew):
         self.input: Input.Input = self.add(
             Input.Input,
             name="Enter text:",
-            # footer=self.translator.src_lang,
+            footer=self.translator.src_lang,
             max_height=height // 2,
         )
 
         self.output: Output.Output = self.add(
             Output.Output,
-            # name=self.translator.dest_lang,
-            footer="Result",
+            footer=self.translator.dest_lang,
+            name="Result",
             editable=False,
         )
 
