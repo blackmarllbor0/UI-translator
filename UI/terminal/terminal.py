@@ -80,6 +80,9 @@ class App(npyscreen.FormBaseNew):
             translated_text = self.translator.translate(self.input.value)
             self.output.value = translated_text
 
+        if self.input.footer != self.translator.src_lang:
+            self.input.footer = self.translator.src_lang
+
         self.input.display()
         self.output.display()
 
