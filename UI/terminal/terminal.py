@@ -37,16 +37,19 @@ class App(npyscreen.FormBaseNew):
             **keywords
         )
 
+        self.is_translate = True
+
     def create(self):
         self.translator = get_translator_by_api()
 
         self.add_event_hander("event_value_edited", self.event_value_edited)
-        self.keypress_timeout = 6
+        self.keypress_timeout = 8
 
         self.add_handlers(
             {
                 "^Q": self.exit,  # ctrl+Q
                 "^U": self.input_box_clear,  # alt+enter
+                "^S": self.swap_lang,  # swap lang
             }
         )
 
@@ -80,8 +83,26 @@ class App(npyscreen.FormBaseNew):
             translated_text = self.translator.translate(self.input.value)
             self.output.value = translated_text
 
+        # auto changes lang when input text
         if self.input.footer != self.translator.src_lang:
             self.input.footer = self.translator.src_lang
+
+        self.input.display()
+        self.output.display()
+
+    def swap_lang(self, _input):
+        input_value = self.input.value
+        input_lang = self.input.footer
+
+        if input_lang != "auto" and input_lang.__str__().strip():
+            self.input.value = self.output.value
+            self.output.value = input_value
+
+            self.translator.set_src_lang(self.output.footer)
+            self.translator.set_dest_lang(input_lang)
+
+            self.input.footer = self.translator.src_lang
+            self.output.footer = self.translator.dest_lang
 
         self.input.display()
         self.output.display()
