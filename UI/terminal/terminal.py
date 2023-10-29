@@ -13,32 +13,6 @@ class TerminalUI(npyscreen.StandardApp):
 
 
 class App(npyscreen.FormBaseNew):
-    def __init__(
-        self,
-        name=None,
-        parentApp=None,
-        framed=None,
-        help=None,
-        color="FORMDEFAULT",
-        widget_list=None,
-        cycle_widgets=False,
-        *args,
-        **keywords
-    ):
-        super().__init__(
-            name,
-            parentApp,
-            framed,
-            help,
-            color,
-            widget_list,
-            cycle_widgets,
-            *args,
-            **keywords
-        )
-
-        self.is_translate = True
-
     def create(self):
         self.translator = get_translator_by_api()
 
