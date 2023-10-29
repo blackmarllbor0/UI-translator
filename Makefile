@@ -1,7 +1,3 @@
-.PHONY: init_venv
-init_venv:
-	source venv/bin/activate
-
 .PHONY: run
 run:
 	python main.py
@@ -9,3 +5,7 @@ run:
 .PHONY: lint
 lint:
 	black .
+
+.PHONY: setup
+setup:
+	python setup.py build

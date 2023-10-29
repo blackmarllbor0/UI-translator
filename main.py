@@ -2,10 +2,12 @@
 # -*- coding: utf-8 -*-
 
 from UI.terminal.terminal import TerminalUI
-from storage import StorageService
+from env import init_env
 
 
 def main():
+    init_env()
+
     app = TerminalUI()
     app.run()
 
