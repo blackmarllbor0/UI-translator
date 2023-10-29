@@ -1,9 +1,9 @@
 storage:
   lang:
     src: "auto"
-    dest: "ru"
+    dest: "en"
   translate_api: "google"
-  open_in: "terminal"
+  open_in: "none"
   buffer:
     paste: true
     copy: true
