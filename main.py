@@ -1,15 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from UI.terminal.terminal import TerminalUI
-from trans.env import init_env
+from trans.trans import run
 
 
 def main():
-    init_env()
-
-    app = TerminalUI()
-    app.run()
+    run()
 
 
 if __name__ == "__main__":

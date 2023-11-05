@@ -34,7 +34,7 @@ def install():
                 "trans = main:main",
             ],
         },
-        scripts=["main.py"]
+        scripts=["main.py"],
     )
 
 
