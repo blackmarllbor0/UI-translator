@@ -1,4 +1,17 @@
 import argparse
+from typing import TypedDict
+
+
+
+class Args(TypedDict):
+    set_config: bool
+    src: str
+    dest: str
+    api: str
+    open: bool
+    paste: bool
+    copy: bool
+    print: bool
 
 
 class ArgParser:
@@ -74,7 +87,7 @@ class ArgParser:
             },
         ]
 
-    def add_args(self):
+    def add_args(self) -> Args:
         for arg in self.args:
             if arg["type"] is None:
                 self.parser.add_argument(
@@ -93,4 +106,16 @@ class ArgParser:
                     action=arg["action"]
                 )
 
-        return self.parser.parse_args()
+        parse_args = self.parser.parse_args()
+        typed_args: Args = {
+            "set_config": parse_args.set_config,
+            "api": parse_args.api,
+            "copy": parse_args.copy,
+            "dest": parse_args.dest,
+            "open": parse_args.open,
+            "paste": parse_args.paste,
+            "print": parse_args.print,
+            "src": parse_args.src,
+        }
+
+        return typed_args
