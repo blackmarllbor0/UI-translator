@@ -29,7 +29,7 @@ git clone https://github.com/blackmarllbor0/UI-translator.git
 2. After that, you need to perform installation og the application.
 
 ```bash
-python setup.py install
+pip install .
 ```
 
 3. Great, now you can use the app! Use `trans` command.

@@ -11,4 +11,6 @@ build
 __pycache__
 UI/terminal/__pycache__
 UI/terminal/components/__pycache__
+trans/__pycache__
 API/__pycache__
+trans.egg-info

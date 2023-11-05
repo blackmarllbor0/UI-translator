@@ -4,7 +4,7 @@ from typing import TypedDict
 
 import yaml
 
-from exit import Exit
+from trans.exit import Exit
 
 
 class Lang(TypedDict):

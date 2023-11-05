@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from UI.terminal.terminal import TerminalUI
-from env import init_env
+from trans.env import init_env
 
 
 def main():

@@ -3,7 +3,7 @@ import npyscreen
 import UI.terminal.components.input as Input
 import UI.terminal.components.output as Output
 
-from exit import Exit
+from trans.exit import Exit
 from API.get_translator_by_api import get_translator_by_api
 
 

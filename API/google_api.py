@@ -1,5 +1,5 @@
 from googletrans import Translator
-from storage import StorageService
+from trans.storage import StorageService
 
 import API.translator as MainTranslator
 

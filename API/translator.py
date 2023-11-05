@@ -1,6 +1,6 @@
 from abc import ABC
 
-from storage import StorageService
+from trans.storage import StorageService
 
 
 class Translator(ABC):

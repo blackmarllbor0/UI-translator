@@ -8,4 +8,4 @@ lint:
 
 .PHONY: setup
 setup:
-	python setup.py build
+	pip install .

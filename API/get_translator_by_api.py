@@ -1,4 +1,4 @@
-from storage import StorageService
+from trans.storage import StorageService
 from API.translator import Translator
 from API.google_api import GoogleTranslator
 
