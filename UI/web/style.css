@@ -1,0 +1,61 @@
+html,
+body {
+  width: 1200px;
+  margin: 50px auto;
+  color: #4d0590;
+}
+
+.head {
+  text-decoration: underline;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 5px;
+  font-size: 40px;
+}
+
+.langs,
+.trans_result {
+  display: flex;
+  border: 1px solid #8a2be2;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.langs {
+  border-radius: 5px 5px 0% 0;
+  font-size: 25px;
+}
+
+.langs > div {
+  width: 600px;
+  display: flex;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.trans_result {
+  border-radius: 0 0 5px 5px;
+  font-size: 25px;
+  border-top: none;
+  height: 600px;
+}
+
+.trans_result > div {
+  width: 600px;
+  display: flex;
+  padding: 5px;
+}
+
+.trans_result > div:first-child {
+  border-right: 1px solid;
+  margin-right: 10px;
+}
+
+textarea {
+  width: 560px;
+  height: 580px;
+  border: none;
+  resize: none;
+  font-size: 25px;
+  outline: none;
+}
